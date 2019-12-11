@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+				xmlns:s="library://ns.adobe.com/flex/spark"
+				xmlns:mx="library://ns.adobe.com/flex/mx"
+				>
+	
+	<fx:Script>
+		<![CDATA[
+
+			import mx.collections.ArrayCollection;			
+
+			var combo:ArrayCollection = new ArrayCollection(
+				[
+				"Selecione",
+				"Masculino",
+				"Feminino"
+				]
+			);
+			
+			var lista:ArrayCollection = new ArrayCollection();
+			
+			protected function inserir(event:MouseEvent):void
+			{
+				var palavra:String = txt.text;
+				var cor:String = CBcor.selectedItem;
+				lista.push({palavra:palavra,cor:cor});
+			}
+
+		]]>
+	</fx:Script>	
+	
+	<fx:Declarations>
+	</fx:Declarations>		
+	
+	<s:Label id="label" x="6" y="13" width="378" fontSize="30" text="Texto" textAlign="center"/>
+	<s:TextInput x="10" y="49" width="147" id="txt"/>
+	<s:ComboBox x="165" y="48" id="CBcor" dataProvider="{combo}" selectedIndex="0"/>
+	<s:Button x="314" y="50" label="Inserir" click="inserir(event)"/>
+	
+	<s:DataGrid x="10" y="79" width="374" requestedRowCount="4">
+		<s:columns>
+			<s:ArrayList>
+				<s:GridColumn dataField="Palavra" headerText="Nome"></s:GridColumn>
+				<s:GridColumn dataField="Cor" headerText="Sexo"></s:GridColumn>
+			</s:ArrayList>
+		</s:columns>
+		<s:typicalItem>
+			<fx:Object dataField1="Sample Data" dataField2="Sample Data" dataField3="Sample Data"></fx:Object>
+		</s:typicalItem>
+		<s:ArrayList>
+		</s:ArrayList>
+	</s:DataGrid>
+	
+		
+</s:Application>
